@@ -1,17 +1,35 @@
 package pl.kurs.watercontainers.models;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class WaterContainer {
+public class WaterContainer implements Serializable {
+    private static final long serialVersionUID = 42L;
+
     private String name;
     private double maxCapacity;
     private double currentWaterLevel;
 
-    public WaterContainer(String name, double maxCapacity, double currentWaterLevel) {
+    private WaterContainer(String name, double maxCapacity, double currentWaterLevel) {
         this.name = name;
         this.maxCapacity = maxCapacity;
         this.currentWaterLevel = currentWaterLevel;
     }
+
+    public static WaterContainer create(String name, double maxCapacity, double currentWaterLevel) {
+        if (maxCapacity <= 0) {
+            throw new RuntimeException("Maksymalna pojemność musi być powyżej 0");
+        }
+        if (currentWaterLevel < 0) {
+            throw new RuntimeException("Aktualny stan wody nie może być poniżej 0");
+        }
+        if (maxCapacity < currentWaterLevel) {
+            throw new RuntimeException("Aktualna ilość wody nie moze być większa, niż maksymalna pojemność");
+        }
+        return new WaterContainer(name,maxCapacity,currentWaterLevel);
+    }
+
+
 
     public String getName() {
         return name;
