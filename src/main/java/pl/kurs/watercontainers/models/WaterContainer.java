@@ -77,5 +77,12 @@ public class WaterContainer implements Serializable {
                 '}';
     }
 
+    public void addWater(double value) {
+        if (currentWaterLevel + value > maxCapacity) {
+            System.out.println("Nie można dolać tyle wody, bo jest za mało miejsca.");
+        } else {
+            currentWaterLevel += value;
+        }
+    }
 
 }
