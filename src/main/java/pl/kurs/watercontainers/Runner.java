@@ -7,8 +7,9 @@ public class Runner {
     public static void main(String[] args) {
 
         WaterContainer beczka = WaterContainer.create("Beczka",150,50);
-        WaterContainer mauzer = WaterContainer.create("Mauzer", 1000, 2000);
+        WaterContainer mauzer = WaterContainer.create("Mauzer", 1000, 500);
 
+        mauzer.subtractWater(2000);
 
 
     }

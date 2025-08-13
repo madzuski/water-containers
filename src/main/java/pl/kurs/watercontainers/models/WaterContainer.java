@@ -85,4 +85,12 @@ public class WaterContainer implements Serializable {
         }
     }
 
+    public void subtractWater(double value) {
+        if (currentWaterLevel - value < 0) {
+            System.out.println("Nie można odlać więcej wody, niż jest");
+        } else {
+            currentWaterLevel -= value;
+        }
+    }
+
 }
