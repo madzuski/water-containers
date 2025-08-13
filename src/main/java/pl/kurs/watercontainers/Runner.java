@@ -11,6 +11,8 @@ public class Runner {
 
         mauzer.subtractWater(2000);
 
+        mauzer.pourWater(beczka,20);
+
 
     }
 }
