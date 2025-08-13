@@ -2,6 +2,7 @@ package pl.kurs.watercontainers.models;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class Employee implements Serializable {
@@ -11,11 +12,13 @@ public class Employee implements Serializable {
     private String firstName;
     private String lastName;
     private BigDecimal salary;
+    private LocalDate birthDate;
 
-    public Employee(String firstName, String lastName, BigDecimal salary) {
+    public Employee(String firstName, String lastName, BigDecimal salary, LocalDate birthDate) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.salary = salary;
+        this.birthDate = birthDate;
     }
 
     public String getFirstName() {
@@ -42,6 +45,14 @@ public class Employee implements Serializable {
         this.salary = salary;
     }
 
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -61,6 +72,7 @@ public class Employee implements Serializable {
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", salary=" + salary +
+                ", birthDate=" + birthDate +
                 '}';
     }
 }
