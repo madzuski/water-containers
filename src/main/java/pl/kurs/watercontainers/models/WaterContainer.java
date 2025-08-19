@@ -77,5 +77,36 @@ public class WaterContainer implements Serializable {
                 '}';
     }
 
+    public void addWater(double value) {
+        if (currentWaterLevel + value > maxCapacity) {
+            System.out.println("Nie można dolać tyle wody, bo jest za mało miejsca.");
+        } else {
+            currentWaterLevel += value;
+        }
+    }
+
+    public void subtractWater(double value) {
+        if (currentWaterLevel - value < 0) {
+            System.out.println("Nie można odlać więcej wody, niż jest");
+        } else {
+            currentWaterLevel -= value;
+        }
+    }
+
+    public void pourWater(WaterContainer sourceContainer, double value) {
+        if (sourceContainer.subtractIsPossible(value) && sourceContainer.addIsPossible(value)) {
+            sourceContainer.subtractWater(value);
+            this.addWater(value);
+        } else {
+            System.out.println("Operacja przelania wody niemożliwa do zrealizowania");
+        }
+    }
+
+    private boolean subtractIsPossible(double value) {
+        return currentWaterLevel - value >= 0;
+    }
+    private boolean addIsPossible(double value) {
+        return currentWaterLevel + value <= maxCapacity;
+    }
 
 }
